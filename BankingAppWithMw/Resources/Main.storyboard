@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Accounts View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AccountsViewController" customModule="BankingAppWithMw" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1f-Vcj">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
+                                <rect key="frame" x="176.66666666666666" y="406" width="40" height="40"/>
+                                <color key="color" systemColor="systemBlueColor"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KQZ-1f-Vcj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5cz-MP-9tL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KQZ-1f-Vcj" secondAttribute="trailing" id="6fq-aa-7fJ"/>
+                            <constraint firstItem="KQZ-1f-Vcj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7gO-8D-2fK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KQZ-1f-Vcj" secondAttribute="bottom" id="8hF-2K-9kL"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ey4-YRO-k0"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GJd-Yh-RWb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Hesaplarım" id="8bC-Xf-vdC-nav">
+                        <barButtonItem key="rightBarButtonItems" systemItem="refresh" id="refreshButton">
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" id="refresh-action"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItems" systemItem="add" id="transferButton">
+                            <connections>
+                                <action selector="transferButtonTapped:" destination="BYZ-38-t0r" id="transfer-action"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="accountsTableView" destination="KQZ-1f-Vcj" id="accountsTableView-outlet"/>
+                        <outlet property="loadingIndicator" destination="YRO-k0-Ey4" id="loadingIndicator-outlet"/>
+                        <outlet property="refreshButton" destination="refreshButton" id="refreshButton-outlet"/>
+                        <outlet property="transferButton" destination="transferButton" id="transferButton-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="132"/>
+        </scene>
+        <!--Transfer View Controller-->
+        <scene sceneID="TransferViewController-scene">
+            <objects>
+                <viewController id="TransferViewController" customClass="TransferViewController" customModule="BankingAppWithMw" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TransferViewController-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scrollView">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="contentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kaynak Hesap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fromAccountLabel">
+                                                <rect key="frame" x="20" y="20" width="100" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <pickerView contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fromAccountPicker">
+                                                <rect key="frame" x="20" y="49" width="353" height="162"/>
+                                            </pickerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hedef Hesap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toAccountLabel">
+                                                <rect key="frame" x="20" y="231" width="100" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <pickerView contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="toAccountPicker">
+                                                <rect key="frame" x="20" y="260" width="353" height="162"/>
+                                            </pickerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amountLabel">
+                                                <rect key="frame" x="20" y="442" width="50" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Transfer tutarı" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="amountTextField">
+                                                <rect key="frame" x="20" y="471" width="353" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Açıklama" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="descriptionLabel">
+                                                <rect key="frame" x="20" y="525" width="100" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Açıklama (opsiyonel)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="descriptionTextField">
+                                                <rect key="frame" x="20" y="554" width="353" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exchangeRateLabel">
+                                                <rect key="frame" x="20" y="608" width="353" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="transferButton">
+                                                <rect key="frame" x="20" y="645" width="353" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="transferButton-height"/>
+                                                </constraints>
+                                                <state key="normal" title="Transfer Et"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Transfer Et"/>
+                                                <connections>
+                                                    <action selector="transferButtonTapped:" destination="TransferViewController" eventType="touchUpInside" id="transferButton-action"/>
+                                                </connections>
+                                            </button>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="transferLoadingIndicator">
+                                                <rect key="frame" x="176.66666666666666" y="695" width="40" height="40"/>
+                                                <color key="color" systemColor="systemBlueColor"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="contentView" firstAttribute="top" secondItem="scrollView" secondAttribute="top" id="contentView-top"/>
+                                    <constraint firstItem="contentView" firstAttribute="leading" secondItem="scrollView" secondAttribute="leading" id="contentView-leading"/>
+                                    <constraint firstAttribute="trailing" secondItem="contentView" secondAttribute="trailing" id="contentView-trailing"/>
+                                    <constraint firstAttribute="bottom" secondItem="contentView" secondAttribute="bottom" id="contentView-bottom"/>
+                                    <constraint firstItem="contentView" firstAttribute="width" secondItem="scrollView" secondAttribute="width" id="contentView-width"/>
+                                    <constraint firstItem="contentView" firstAttribute="height" constant="600" id="contentView-height"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TransferViewController-safeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="scrollView" firstAttribute="top" secondItem="TransferViewController-safeArea" secondAttribute="top" id="scrollView-top"/>
+                            <constraint firstItem="TransferViewController-safeArea" firstAttribute="trailing" secondItem="scrollView" secondAttribute="trailing" id="scrollView-trailing"/>
+                            <constraint firstItem="scrollView" firstAttribute="leading" secondItem="TransferViewController-safeArea" secondAttribute="leading" id="scrollView-leading"/>
+                            <constraint firstItem="TransferViewController-safeArea" firstAttribute="bottom" secondItem="scrollView" secondAttribute="bottom" id="scrollView-bottom"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Para Transferi" id="TransferViewController-nav">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cancelButton">
+                            <connections>
+                                <action selector="cancelButtonTapped" destination="TransferViewController" id="cancelButton-action"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="amountTextField" destination="amountTextField" id="amountTextField-outlet"/>
+                        <outlet property="descriptionTextField" destination="descriptionTextField" id="descriptionTextField-outlet"/>
+                        <outlet property="exchangeRateLabel" destination="exchangeRateLabel" id="exchangeRateLabel-outlet"/>
+                        <outlet property="fromAccountPicker" destination="fromAccountPicker" id="fromAccountPicker-outlet"/>
+                        <outlet property="loadingIndicator" destination="transferLoadingIndicator" id="loadingIndicator-outlet"/>
+                        <outlet property="toAccountPicker" destination="toAccountPicker" id="toAccountPicker-outlet"/>
+                        <outlet property="transferButton" destination="transferButton" id="transferButton-outlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TransferViewController-firstResponder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="132"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
